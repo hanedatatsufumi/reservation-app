@@ -19,13 +19,13 @@ export class ProductListComponent {
 
     const productObservable = this.productService.getProducts();
 
-    productObservable.subscribe(
-      (data) => { 
+    productObservable.subscribe({
+      next: (data) => { 
         this.products = data;
         // console.log('got value ' + data);
         // debugger;
        },
-      (err) => { console.error('something wrong occurred: ' + err); },
-    );
+      error: (err) => { console.error('something wrong occurred: ' + err); },
+    });
   }
 }
